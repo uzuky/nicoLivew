@@ -1,7 +1,7 @@
 javascript:!function() {
 	var L = document.location.href,
 		m = document.createElement('div'),
-		d = 'v20131231',
+		d = 'v20140112',
 		ver = '<small><a href="http://nico.ms/ar303976" target="_blank" title="support" style="position:relative; top:5px; background-color:rgba(255,255,255,0.4);">' + d + '</a></small>';
 	switch (true) {
 //いつもの放送ページの処理
@@ -66,7 +66,7 @@ javascript:!function() {
 		nama2 = '';
 	}
 //ページに追加
-		m.innerHTML = '<div><b><span title="閉じる" onClick="var c = &quot;nicoLivew&quot;,close = document.getElementById(c);close.parentNode.removeChild(close);" style="float:right; cursor:pointer; font-size:large; position:relative; bottom:10px; left:5px;">×</span>プレイヤー変更</b></div>' + Aries + '<span style="white-space:nowrap;"><input type="button" value="GINZA" onClick="window.open(\'http://live.nicovideo.jp/nicoliveplayer.swf?v=' + h + '&languagecode=ja-jp\',\'_blank\',\'width=960,height=490\');' + del + '"><input type="button" value="ニコファーレ" onClick="window.open(\'http://live.nicovideo.jp/liveplayer_farre.swf?v=' + h + '\',\'_blank\',\'width=960,height=520\');' + del + '"></span><br><input type="button" value="原宿" onClick="window.open(\'http://live.nicovideo.jp/liveplayer.swf?v=' + h + '\',\'_blank\',\'width=950,height=520\');' + del + '"><input type="button" value="ページ更新" onClick="window.location.reload(true)"><br>' + nama1 + nama2 + ver;
+		m.innerHTML = '<div><b><span title="閉じる" onClick="var c = &quot;nicoLivew&quot;,close = document.getElementById(c);close.parentNode.removeChild(close);" style="float:right; cursor:pointer; font-size:large; position:relative; bottom:10px; left:5px;">×</span><span title="！？" onClick="' + del + '" style="cursor:default;">プレイヤー変更</span></b></div>' + Aries + '<span style="white-space:nowrap;"><input type="button" value="GINZA" onClick="window.open(\'http://live.nicovideo.jp/nicoliveplayer.swf?v=' + h + '&languagecode=ja-jp\',\'_blank\',\'width=960,height=490\');' + del + '"><input type="button" value="ニコファーレ" onClick="window.open(\'http://live.nicovideo.jp/liveplayer_farre.swf?v=' + h + '\',\'_blank\',\'width=960,height=520\');' + del + '"></span><br><input type="button" value="原宿" onClick="window.open(\'http://live.nicovideo.jp/liveplayer.swf?v=' + h + '\',\'_blank\',\'width=950,height=520\');' + del + '"><input type="button" value="ページ更新" onClick="window.location.reload(true)"><br>' + nama1 + nama2 + ver;
 		m.style.color = 'rgb(250,250,250)';
 		m.style.textAlign = 'center';
 		m.style.padding = '10px';
