@@ -50,7 +50,8 @@ javascript:!function() {
 		if (h.match(/lv[0-9]+/)) {
 			h = h.replace(/.+?(lv\d+).*/, '$1'),
 			Aries = '',
-			del = '';
+			del = '',
+			nushi = 'Y';
 		} else {
 			alert('放送IDが入ってないよ！\n「' + h + '」\n連絡先とか　http://nico.ms/ar303976');
 			return false;
