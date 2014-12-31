@@ -1,7 +1,8 @@
 javascript:!function() {
   var L = document.location.href,
     m = document.createElement('div'),
-    d = 'v20140112',
+    ua = window.navigator.userAgent.toLowerCase(),
+    d = 'v20141231',
     ver = '<small><a href="http://nico.ms/ar303976" target="_blank" title="support" style="position:relative; top:5px; background-color:rgba(255,255,255,0.4);">' + d + '</a></small>';
   switch (true) {
 //いつもの放送ページの処理
@@ -33,9 +34,14 @@ javascript:!function() {
     break;
 //新しい放送ページ(？)の処理
   } case /live2\.nicovideo\.jp\/watch/.test(L): {
-    var h = L.replace(/.+?watch\/(lv\d+).*/, '$1'),
-      s = document.getElementsByTagName('script')[17].outerHTML,
-      p = s.replace(/[\s\u2028\u2029]/g,''),
+    var h = L.replace(/.+?watch\/(lv\d+).*/, '$1');
+  //firefox だけちょっと違う
+    if (ua.indexOf('firefox') != -1) {
+      s = document.getElementsByTagName('script')[17].outerHTML;
+    } else {
+      s = document.getElementsByTagName('script')[16].outerHTML;
+    }
+    var p = s.replace(/[\s\u2028\u2029]/g,''),
     //URL のパラメータ
       we = 'webSocketUrl=ws://a.live2.nicovideo.jp/wsapi/v1/watch/',
       au = p.replace(/.*?"(audienceToken)".+?"(\w+)".*/,'&$1=$2'),
