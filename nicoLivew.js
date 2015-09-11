@@ -85,5 +85,5 @@ javascript:!function() {
     div.style.bottom = '20px';
     div.style.background = 'rgba(0,128,255,0.5)';
     div.setAttribute("id", "nicoLivew");
-    document.body.appendChild(m);
+    document.body.appendChild(div);
 }();
