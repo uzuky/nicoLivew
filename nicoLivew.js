@@ -15,8 +15,8 @@ javascript:!function() {
     delButton = 'var f = &quot;flvplayer_container&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);';
 //放送主かどうか
   //ログインしてるユーザーIDを取得
-    var myUserIdSource = document.querySelectorAll('div[id="hide_tool_box"] > script'),
-    myUserId = myUserIdSource[1].outerHTML.replace(/[\s\S]+id: (\d+),[\s\S]+/, '$1');
+    var myUserIdSource = document.querySelectorAll('span[id="siteHeaderUserIconContainer"] > img');
+    myUserId = myUserIdSource[0].outerHTML.replace(/[\s\S]\/(\d+)\.(jpg|png|gif)[\s\S]*/, '$1');
   //放送主のユーザーIDを取得(表示がない放送は0)
     var liveUserIdSource = document.querySelector('.nicopedia_nushi');
       if (!liveUserIdSource) {
@@ -42,16 +42,16 @@ javascript:!function() {
     }
     var p = s.replace(/[\s\u2028\u2029]/g,'');
     //URL のパラメータ
-      swf = p.replace(/.*?swf:"(http:.+?AriesPlayer\.swf)".*/,'$1?');
-      ws0 = p.replace(/.*?"(webSocketUrl)".+?"([\w\W]+?)".*/,'&$1=$2'),
-      ws = ws0.replace(/\\\//g,'/');alert(ws);
-      ot = p.replace(/.*?"(openTime)".+?"(\w+)".*/,'&$1=$2');
-      at = p.replace(/.*?"(audienceToken)".+?"(\w+)".*/,'&$1=$2');
-      ec = "&enableClientLog=1";
-      bt = p.replace(/.*?"(beginTime)".+?"(\d+)".*/,'&$1=$2');
-      rn = p.replace(/.*?"(relatedNicoliveProgramId)".+?"(\w+)".*/,'&$1=$2');
-      bi = p.replace(/.*?"(broadcastId)".+?"(\d+)".*/,'&$1=$2');
-      pi = p.replace(/.*?"(programId)".+?"(\d+)".*/,'&$1=$2');
+    var swf = p.replace(/.*?swf:"(http:.+?AriesPlayer\.swf)".*/,'$1?');
+    var ws0 = p.replace(/.*?"(webSocketUrl)".+?"([\w\W]+?)".*/,'&$1=$2'),
+    ws = ws0.replace(/\\\//g,'/');alert(ws);
+    var ot = p.replace(/.*?"(openTime)".+?"(\w+)".*/,'&$1=$2');
+    var at = p.replace(/.*?"(audienceToken)".+?"(\w+)".*/,'&$1=$2');
+    var ec = "&enableClientLog=1";
+    var bt = p.replace(/.*?"(beginTime)".+?"(\d+)".*/,'&$1=$2');
+    var rn = p.replace(/.*?"(relatedNicoliveProgramId)".+?"(\w+)".*/,'&$1=$2');
+    var bi = p.replace(/.*?"(broadcastId)".+?"(\d+)".*/,'&$1=$2');
+    var pi = p.replace(/.*?"(programId)".+?"(\d+)".*/,'&$1=$2');
 
       Aries = '<input type="button" value="Aries" onClick="window.open(\'' + swf + ws + ot + at + ec + bt + rn + bi + pi + '\',\'_blank\',\'width=960,height=512\');var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);"><br>',
       delButton = 'var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);',
