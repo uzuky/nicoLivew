@@ -2,15 +2,15 @@ javascript:!function() {
   var loc = document.location.href,
   div = document.createElement('div'),
   ua = window.navigator.userAgent.toLowerCase(),
-  day = 'v20150912',
+  day = 'v20160131',
   ver = '<small><a href="http://nico.ms/ar303976" target="_blank" title="support" style="position:relative; top:5px; background-color:rgba(255,255,255,0.4);">' + day + '</a></small>';
   switch (true) {
 //いつもの放送ページの処理
   case /live\.nicovideo\.jp\/watch/.test(loc): {
   //ここ仕様変更に弱そう
-    var url = document.querySelector('meta[property="og:url"]'),
+    var url = document.querySelector('meta[property="al:web:url"]'),
   //放送IDを取得
-    liveId = url.replace(/.+?watch\/(lv\d+).*/, '$1'),
+    liveId = url.outerHTML.replace(/.+?watch\/(lv\d+).*/, '$1'),
     Aries = '',
     delButton = 'var f = &quot;flvplayer_container&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);';
 //放送主かどうか
@@ -34,19 +34,26 @@ javascript:!function() {
 //新しい放送ページ(？)の処理
   } case /live2\.nicovideo\.jp\/watch/.test(loc): {
     var liveId = loc.replace(/.+?watch\/(lv\d+).*/, '$1');
+    //ここ仕様変更に弱い
     if (ua.indexOf('firefox') != -1) {
-      s = document.getElementsByTagName('script')[17].outerHTML;
+      s = document.getElementsByTagName('script')[21].outerHTML;
     } else {
-      s = document.getElementsByTagName('script')[16].outerHTML;
+      s = document.getElementsByTagName('script')[20].outerHTML;
     }
-    var p = s.replace(/[\s\u2028\u2029]/g,''),
+    var p = s.replace(/[\s\u2028\u2029]/g,'');
     //URL のパラメータ
-      we = 'webSocketUrl=ws://a.live2.nicovideo.jp/wsapi/v1/watch/',
-      au = p.replace(/.*?"(audienceToken)".+?"(\w+)".*/,'&$1=$2'),
-      re = p.replace(/.*?"(relatedNicoliveProgramId)".+?"(\w+)".*/,'&$1=$2'),
-      br = p.replace(/.*?"(broadcastId)".+?"(\d+)".*/,'&$1=$2'),
-      be = p.replace(/.*?"(beginTime)".+?"(\d+)".*/,'&$1=$2');
-      Aries = '<input type="button" value="Aries" onClick="window.open(\'http://nl.nimg.jp/public/relive/1.4.36/assets/web/r1/swfs/v1/AriesPlayer.swf?' + we + au + re + br + be + '\',\'_blank\',\'width=960,height=512\');var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);"><br>',
+      swf = p.replace(/.*?swf:"(http:.+?AriesPlayer\.swf)".*/,'$1?');
+      ws0 = p.replace(/.*?"(webSocketUrl)".+?"([\w\W]+?)".*/,'&$1=$2'),
+      ws = ws0.replace(/\\\//g,'/');alert(ws);
+      ot = p.replace(/.*?"(openTime)".+?"(\w+)".*/,'&$1=$2');
+      at = p.replace(/.*?"(audienceToken)".+?"(\w+)".*/,'&$1=$2');
+      ec = "&enableClientLog=1";
+      bt = p.replace(/.*?"(beginTime)".+?"(\d+)".*/,'&$1=$2');
+      rn = p.replace(/.*?"(relatedNicoliveProgramId)".+?"(\w+)".*/,'&$1=$2');
+      bi = p.replace(/.*?"(broadcastId)".+?"(\d+)".*/,'&$1=$2');
+      pi = p.replace(/.*?"(programId)".+?"(\d+)".*/,'&$1=$2');
+
+      Aries = '<input type="button" value="Aries" onClick="window.open(\'' + swf + ws + ot + at + ec + bt + rn + bi + pi + '\',\'_blank\',\'width=960,height=512\');var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);"><br>',
       delButton = 'var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);',
       nushi = 'N';
     break;
