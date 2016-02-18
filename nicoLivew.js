@@ -19,7 +19,8 @@ javascript:!function() {
       var myUserId = '0',
       message = '<div style="margin-top:5px; color:rgb(0,0,0);"><small>ユーザー ID が取得できなかったため放送者モードで表示しています。<br>(配信ツールなどは視聴者側が操作することはできません)<br>不具合か仕様変更の可能性があるので<br>上のバージョン番号をクリックした先の記事か<br><a href="https://twitter.com/uzuky" target="_blank" style=" background-color:rgba(255,255,255,0.4);">Twitter</a>まで連絡くださるとなるべく早く直します。</small></div>';
     } else {
-      var myUserId = myUserIdSource.outerHTML.replace(/[\s\S]+data\-nico\-userid="(\d+)"[\s\S]*/, '$1');
+      var myUserId = myUserIdSource.outerHTML.replace(/[\s\S]+data\-nico\-userid="(\d+)"[\s\S]*/, '$1'),
+      message = '';
     }
   //放送主のユーザーIDを取得(表示がない放送は0)
     var liveUserIdSource = document.querySelector('.nicopedia_nushi');
