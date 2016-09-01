@@ -71,7 +71,8 @@ console.log(myUserIdSource.outerHTML);
 
       var Aries = '<input type="button" value="Aries" onClick="window.open(\'' + swf + ws + ot + at + ec + bt + rn + bi + pi + '\',\'_blank\',\'width=960,height=512\');var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);"><br>',
       delButton = 'var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);',
-      nushi = 'N';
+      nushi = 'N',
+      message = '';
     break;
 
 
