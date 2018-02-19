@@ -66,7 +66,6 @@ console.log(myUserIdSource.outerHTML);
 //     rn = p.replace(/.*?"(relatedNicoliveProgramId)".+?"(\w+)".*/,'&$1=$2'),
 //     bi = p.replace(/.*?"(broadcastId)".+?"(\d+)".*/,'&$1=$2'),
 //     pi = p.replace(/.*?"(programId)".+?"(\d+)".*/,'&$1=$2');
-
 //       var Aries = '<input type="button" value="Aries" onClick="window.open(\'' + swf + ws + ot + at + ec + bt + rn + bi + pi + '\',\'_blank\',\'width=960,height=512\');var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);"><br>',
 //       delButton = 'var f = &quot;playerswf&quot;,flv = document.getElementById(f);flv.parentNode.removeChild(flv);',
 //       nushi = 'N',
@@ -74,7 +73,7 @@ console.log(myUserIdSource.outerHTML);
 
   } case /live2\.nicovideo\.jp\/watch/.test(loc): {
     var liveId = loc.replace(/.+?watch\/(lv\d+).*/, '$1');
-    delButton = '';
+    delButton = 'var plycls = &quot;___player-body-area___3aMT1&quot;,player5 = document.getElementsByClassName(plycls);player5[0].parentNode.removeChild(player5[0]);';
     nushi = 'Y';
   break;
 
@@ -110,7 +109,7 @@ console.log(myUserIdSource.outerHTML);
     div.style.border = '2px solid black';
     div.style.right = '20px';
     div.style.bottom = '20px';
-    div.style.background = 'rgba(0,120,240,0.5)';
+    div.style.background = 'rgba(0,80,160,0.5)';
     div.setAttribute("id", "nicoLivew");
     document.body.appendChild(div);
 }();
